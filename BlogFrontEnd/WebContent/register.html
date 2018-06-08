@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+</head>
+<body>
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Sign Up</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="username">UserName</label>  
+  <div class="col-md-4">
+  <input id="username" name="username" type="text" placeholder="UserName" class="form-control input-md" required="required"><br>
+  <span class="help-block">Enter your mailId as your username</span>  
+  </div>
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="password">Password </label>
+  <div class="col-md-4">
+    <input id="password" name="password" type="password" placeholder="password" class="form-control input-md" required="required">
+    
+  </div>
+</div>
+
+<!-- Prepended text-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="mobile">Contact Number</label>
+  <div class="col-md-4">
+    <div class="input-group">
+      <span class="input-group-addon">+91</span>
+      <input id="mobile" name="mobile" class="form-control" placeholder="contact number" type="text" required="required">
+    </div>
+    
+  </div>
+</div>
+
+<!-- Multiple Radios (inline) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="gender">Gender</label>
+  <div class="col-md-4"> 
+    <label class="radio-inline" for="gender-0">
+      <input type="radio" name="gender" id="gender-0" value="m" checked="checked">
+      Male
+    </label> 
+    <label class="radio-inline" for="gender-1">
+      <input type="radio" name="gender" id="gender-1" value="f">
+      Female
+    </label>
+  </div>
+</div>
+
+<!-- Multiple Checkboxes (inline) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="remember"></label>
+  <div class="col-md-4">
+    <label class="checkbox-inline" for="remember-0">
+      <input type="checkbox" name="remember" id="remember-0" value="remember">
+      Remember Me
+    </label>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for=""></label>
+  <div class="col-md-4">
+    <button id="" name="" class="btn btn-success">SignUp</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+</body>
+</html>
