@@ -6,6 +6,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,10 +34,13 @@ public class UserDAOImpl implements UserDAO {
 
 	public boolean updateUser(User user) {
         try {
+        	System.out.println("line 36 of UserIMPL");
 			sessionFactory.getCurrentSession().update(user);
+			System.out.println("line 38 of UserIMPL");
 			return true;
 		} catch (HibernateException e) {
 			e.printStackTrace();
+			System.out.println("line 42 of UserIMPL");
 			return false;
 		}
 	}
@@ -52,11 +56,13 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 
-	public User getUser(String emailId) {
+	public User getUser(String email) {
 		try {
-			return sessionFactory.getCurrentSession().get(User.class,emailId);
-		} catch (HibernateException e) {
+			System.out.println("line 60 of userIMPL");
+			return  (User) sessionFactory.getCurrentSession().createQuery("From User where email like '%"+email+"%'").getSingleResult();
+		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("Line 64 of userIMPL");
 			return null;
 		}
 	}

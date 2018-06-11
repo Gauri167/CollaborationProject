@@ -27,7 +27,7 @@ public class UserTest {
 		context.refresh();
 		userDAO=(UserDAO) context.getBean("userDAO");
 	}
-
+	  @Ignore
 	@Test
 	public void testAddUser() {
 		user=new User();
@@ -39,10 +39,13 @@ public class UserTest {
 		boolean result= userDAO.addUser(user);
 		assertTrue("Add User Test Case",result);
 	}
-    @Ignore
+   
 	@Test
 	public void testUpdateUser() {
-		fail("Not yet implemented");
+    	user=userDAO.getUser("gauri@gmail.com");
+    	user.setOnline(true);		
+		boolean result=userDAO.updateUser(user);
+		assertTrue("Update User Test Case",result);
 	}
     @Ignore
 	@Test
@@ -52,7 +55,11 @@ public class UserTest {
     @Ignore
 	@Test
 	public void testGetUser() {
-		fail("Not yet implemented");
+		User user=userDAO.getUser("gauri@gmail.com");
+		boolean result=true;
+		if(user==null)
+			result=false;
+		assertTrue("Get User Test Case",result);
 	}
     @Ignore
 	@Test

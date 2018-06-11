@@ -41,7 +41,8 @@ public class DBConfig {
 	private Properties getHibernateProperties()
 	{
 		Properties prop=new Properties();
-		prop.put("hibernate.hbm2ddl.auto","update");
+		prop.put("hibernate.hbm2ddl.auto","update");//HibernateMappingFile(hbm),DataDescriptionLanguage(ddl)
+		                                            //possible values=create,create:drop,validate,update
 		prop.put("hibernate.dialect","org.hibernate.dialect.Oracle10gDialect");
 		prop.put("hibernate.show_sql","true");
 		prop.put("hibernate.format_sql","true");
