@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.blog.dao.UserDAO;
 import com.blog.domain.User;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 public class UserController {
@@ -59,15 +61,26 @@ public class UserController {
 	
 	@GetMapping(value="/showUser/{emailId}")
 	@ResponseBody
-	public ResponseEntity<?> showUser(@PathVariable("emailId") String emailId)
+	public ResponseEntity<String> showUser(@PathVariable("emailId") String emailId)
 	{
 		User user=userDAO.getUser(emailId);
+		String jsonInString="";
 		if(user==null)
-			return new ResponseEntity<User>(user,HttpStatus.NOT_FOUND);
+			return new ResponseEntity<String>("Cannot Show User",HttpStatus.NOT_FOUND);
 		else {
+			ObjectMapper mapper = new ObjectMapper();
+			try {
+				jsonInString = mapper.writeValueAsString(user);
+				System.out.println(jsonInString);
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			//mapper.writeValue(new File("D:\\staff.json"), staff);
 			System.out.println(user.getEmail());
 			System.out.println(user.getUsername());
-			return new ResponseEntity<User>(user,HttpStatus.OK);}
+			return new ResponseEntity<String>(jsonInString,HttpStatus.OK);}
 	}
 	
 	@GetMapping(value="/showAllUsers")
