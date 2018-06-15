@@ -31,6 +31,7 @@
    <ul class="nav navbar-nav">
    <li><a href="#!/">Home</a></li>
    <li><a href="#">About Us</a></li>
+   <li ng-if="currentUser.role=='A'"><a href="#!/acceptBlog">AcceptBlog</a></li>
    <li><a href="#!/contactUs">Contact Us</a></li>
    <li><a href="#!/login">Sign-In</a></li>
    <li><a href="#!/register">Register</a></li>
@@ -139,5 +140,6 @@
 <script src="assessts/angular/userScript.js"></script>
 <script src="assessts/angular/addBlog.js"></script>
 <script src="assessts/angular/addJob.js"></script>
+<script src="assessts/angular/validateUser.js"></script>
 </body>
 </html>

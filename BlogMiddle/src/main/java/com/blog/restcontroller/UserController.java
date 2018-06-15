@@ -73,7 +73,6 @@ public class UserController {
 				jsonInString = mapper.writeValueAsString(user);
 				System.out.println(jsonInString);
 			} catch (JsonProcessingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			

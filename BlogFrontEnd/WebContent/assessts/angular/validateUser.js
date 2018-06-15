@@ -1,4 +1,4 @@
-var app=angular.module("myApp");
+
 app.controller("LoginController",function($scope,$http,$location,$rootScope){
 	$scope.user={"email":'',"password":''};
 	$scope.validate=function(){
@@ -6,7 +6,19 @@ app.controller("LoginController",function($scope,$http,$location,$rootScope){
 		$http.post('http://localhost:8084/BlogMiddle/validateUser',$scope.user).then(function(response){
 			$scope.message=response.statusText.message;
 			console.log('Status Text:'+$scope.message);
-			$location.url('http://localhost:8084/BlogMiddle/addBlog')
-		});
+			$scope.user=response.data;
+			$rootScope.currentUser=response.data;
+			if($rootScope.currentUser.role=="A")
+				{$location.url('/')
+				alert($rootScope.currentUser.role);}
+			if($rootScope.currentUser.role=="C")	
+			{ $location.url('/addBlog')
+				alert($scope.user.role);}
+		},
+		function()
+		{
+			alert("Invalid User Please try Again");
+		}
+		);
 	}
 });
