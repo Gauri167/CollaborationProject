@@ -5,18 +5,18 @@
 <title>Register</title>
 </head>
 <body>
-<form class="form-horizontal">
+<div ng-controller="UserController">
+<form class="form-horizontal" method="post">
 <fieldset>
 
 <!-- Form Name -->
 <legend>Sign Up</legend>
 
-<!-- Text input-->
+<!-- Email input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="username">UserName</label>  
+  <label class="col-md-4 control-label" for="username">Email Id</label>  
   <div class="col-md-4">
-  <input id="username" name="username" type="text" placeholder="UserName" class="form-control input-md" required="required"><br>
-  <span class="help-block">Enter your mailId as your username</span>  
+  <input id="email" name="email" type="email" placeholder="Email Id" class="form-control input-md" required="required" ng-model="user.email">
   </div>
 </div>
 
@@ -24,8 +24,25 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="password">Password </label>
   <div class="col-md-4">
-    <input id="password" name="password" type="password" placeholder="password" class="form-control input-md" required="required">
+    <input id="password" name="password" type="password" placeholder="password" class="form-control input-md" required="required" ng-model="user.password">
     
+  </div>
+</div>
+
+<!-- Confirm Password-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="password">Confirm Password </label>
+  <div class="col-md-4">
+    <input type="password" placeholder="confirm password" class="form-control input-md" required="required">
+    
+  </div>
+</div>
+
+<!-- UserName input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="username">UserName</label>  
+  <div class="col-md-4">
+  <input id="username" name="username" type="text" placeholder="User Name" class="form-control input-md" required="required" ng-model="user.username">
   </div>
 </div>
 
@@ -35,24 +52,9 @@
   <div class="col-md-4">
     <div class="input-group">
       <span class="input-group-addon">+91</span>
-      <input id="mobile" name="mobile" class="form-control" placeholder="contact number" type="text" required="required">
+      <input id="mobile" name="mobile" class="form-control" placeholder="contact number" type="text" required="required" ng-model="user.phone">
     </div>
     
-  </div>
-</div>
-
-<!-- Multiple Radios (inline) -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="gender">Gender</label>
-  <div class="col-md-4"> 
-    <label class="radio-inline" for="gender-0">
-      <input type="radio" name="gender" id="gender-0" value="m" checked="checked">
-      Male
-    </label> 
-    <label class="radio-inline" for="gender-1">
-      <input type="radio" name="gender" id="gender-1" value="f">
-      Female
-    </label>
   </div>
 </div>
 
@@ -71,12 +73,17 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for=""></label>
   <div class="col-md-4">
-    <button id="" name="" class="btn btn-success">SignUp</button>
+    <button id="" name="" class="btn btn-success" ng-click="register()">SignUp</button>
   </div>
 </div>
 
 </fieldset>
 </form>
+
+
+<h3>{{message}}</h3>
+{{2+3}}
+</div>
 
 </body>
 </html>

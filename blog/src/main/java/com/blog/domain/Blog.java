@@ -1,12 +1,17 @@
 package com.blog.domain;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name="Blog_Table")
@@ -18,6 +23,7 @@ public class Blog {
 	private String title;
 	private String content;
 	private String postedBy;
+	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="dd-MM-yyyy")
 	private Date  postedOn;
 	private String username;
 	private String status;
@@ -25,6 +31,15 @@ public class Blog {
 	private int shared;
 	private String sharedBy;
 	
+	@OneToMany(mappedBy="blog",fetch=FetchType.EAGER)
+	private Set<BlogComment> blogComments;
+	
+	public Set<BlogComment> getBlogComments() {
+		return blogComments;
+	}
+	public void setBlogComments(Set<BlogComment> blogComments) {
+		this.blogComments = blogComments;
+	}
 	public String getUsername() {
 		return username;
 	}

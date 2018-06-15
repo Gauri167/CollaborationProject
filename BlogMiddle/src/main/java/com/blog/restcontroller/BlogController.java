@@ -36,7 +36,7 @@ public class BlogController {
 		blog.setStatus("A");
 		
 		if(blogDAO.addBlog(blog))
-			return new ResponseEntity<String>("Success",HttpStatus.OK);
+			return new ResponseEntity<String>("{\"message\":\"Success\"}",HttpStatus.OK);
 		else
 			return new ResponseEntity<String>("Failure",HttpStatus.NOT_FOUND);	
 	}

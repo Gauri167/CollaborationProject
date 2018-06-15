@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<div ng-controller="JobController">
 <form class="form-horizontal">
 <fieldset>
 
@@ -13,10 +7,9 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Job Title</label>  
+  <label class="col-md-4 control-label" for="textinput">Job Designation</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" required="required">
-  <span class="help-block">enter the post of job</span>  
+  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" required="required" ng-model="job.jobDesignation"> 
   </div>
 </div>
 
@@ -24,16 +17,31 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="description">Job Description</label>
   <div class="col-md-4">                     
-    <textarea class="form-control" id="description" name="description" required="required"></textarea>
+    <textarea class="form-control" id="description" name="description" required="required" ng-model="job.jobDescription"></textarea>
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="">Qualification</label>  
+  <label class="col-md-4 control-label" for="">Company</label>  
   <div class="col-md-4">
-  <input id="" name="" type="text" placeholder="" class="form-control input-md" required="required">
-  <span class="help-block">enter the minimum qualification required</span>  
+  <input id="" name="" type="text" placeholder="" class="form-control input-md" required="required" ng-model="job.company">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="">Location</label>  
+  <div class="col-md-4">
+  <input id="" name="" type="text" placeholder="" class="form-control input-md" required="required" ng-model="job.location">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="">Salary</label>  
+  <div class="col-md-4">
+  <input id="" name="" type="text" placeholder="" class="form-control input-md" required="required" ng-model="job.salary"> 
   </div>
 </div>
 
@@ -41,17 +49,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="">Apply By Date</label>  
   <div class="col-md-4">
-  <input id="" name="" type="date" placeholder="" class="form-control input-md" required="required">
-  <span class="help-block">enter the last date for applying </span>  
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="">Posts</label>  
-  <div class="col-md-4">
-  <input id="" name="" type="text" placeholder="" class="form-control input-md" required="required">
-  <span class="help-block">enter the number of posts</span>  
+  <input id="" name="" type="date" placeholder="" class="form-control input-md" required="required" ng-model="job.applyLastDate"> 
   </div>
 </div>
 
@@ -59,12 +57,10 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for=""></label>
   <div class="col-md-4">
-    <button id="" name="" class="btn btn-primary">Add Job</button>
+    <button id="" name="" class="btn btn-primary" ng-click="addJob()">Add Job</button>
   </div>
 </div>
 
 </fieldset>
 </form>
-
-</body>
-</html>
+</div>

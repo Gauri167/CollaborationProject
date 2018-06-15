@@ -6,8 +6,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.hibernate.HibernateException;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -75,6 +75,19 @@ public class UserDAOImpl implements UserDAO {
 		e.printStackTrace();
 		return null;
 	}
+	}
+
+	@SuppressWarnings("deprecation")
+	public User validate(String email, String password) {
+		try {
+			User user=(User) sessionFactory.getCurrentSession().createCriteria(User.class).
+					add(Restrictions.eq("email",email)).
+					add(Restrictions.eq("password",password)).uniqueResult();
+			return user;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }

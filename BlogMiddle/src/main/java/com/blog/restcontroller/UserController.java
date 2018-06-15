@@ -23,11 +23,11 @@ public class UserController {
 	@Autowired
 	UserDAO userDAO;
 	
-	@PostMapping(value="/addUser")
+	@PostMapping(value="/registerUser")
 	public ResponseEntity<String> addUser(@RequestBody User user)
 	{
 		if(userDAO.addUser(user))
-			return new ResponseEntity<String>("User added successfully",HttpStatus.OK);
+			return new ResponseEntity<String>("{\"message\":\"Success\"}",HttpStatus.OK);
 		else
 			return new ResponseEntity<String>("User add failed",HttpStatus.NOT_FOUND);
 	}
@@ -91,5 +91,17 @@ public class UserController {
 			return new ResponseEntity<List<User>>(list,HttpStatus.OK);
 		else
 			return new ResponseEntity<List<User>>(list,HttpStatus.NOT_FOUND);
+	}
+	
+	@PostMapping(value="/validateUser")
+	public ResponseEntity<User> validateUser(@RequestBody User user)
+	{
+		String email=user.getEmail();
+		String password=user.getPassword();
+		User vUser=userDAO.validate(email, password);
+		if(vUser==null)
+			return new ResponseEntity<User>(vUser,HttpStatus.NOT_FOUND);
+		else
+			return new ResponseEntity<User>(vUser,HttpStatus.OK);
 	}
 }

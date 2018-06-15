@@ -17,12 +17,15 @@ public class Job {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	private String title;
-	private String description;
-	private String postedBy;
+	private String jobDesignation;
+	private String jobDescription;
+	private String company;
+	private String location;
+	private int salary;
 	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="dd-MM-yyyy")
 	private Date postedOn;
-	private String username;
+	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="dd-MM-yyyy")
+	private Date applyLastDate;
 	
 	public int getId() {
 		return id;
@@ -30,23 +33,35 @@ public class Job {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getTitle() {
-		return title;
+	public String getJobDesignation() {
+		return jobDesignation;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setJobDesignation(String jobDesignation) {
+		this.jobDesignation = jobDesignation;
 	}
-	public String getDescription() {
-		return description;
+	public String getJobDescription() {
+		return jobDescription;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setJobDescription(String jobDescription) {
+		this.jobDescription = jobDescription;
 	}
-	public String getPostedBy() {
-		return postedBy;
+	public String getCompany() {
+		return company;
 	}
-	public void setPostedBy(String postedBy) {
-		this.postedBy = postedBy;
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public int getSalary() {
+		return salary;
+	}
+	public void setSalary(int salary) {
+		this.salary = salary;
 	}
 	public Date getPostedOn() {
 		return postedOn;
@@ -54,11 +69,11 @@ public class Job {
 	public void setPostedOn(Date postedOn) {
 		this.postedOn = postedOn;
 	}
-	public String getUsername() {
-		return username;
+	public Date getApplyLastDate() {
+		return applyLastDate;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setApplyLastDate(Date applyLastDate) {
+		this.applyLastDate = applyLastDate;
 	}
-
+	
 }

@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Login</title>
-</head>
-<body>
+<div ng-controller="LoginController">
 <form class="form-horizontal">
 <fieldset>
 
@@ -15,8 +9,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="email">UserName</label>  
   <div class="col-md-4">
-  <input id="email" name="email" type="text" placeholder="Enter your username" class="form-control input-md" required="required"><br>
-  <span class="help-block">your mailId is username</span>  
+  <input id="email" name="email" type="text" placeholder="Enter your email" class="form-control input-md" required="required" ng-model="user.email">
   </div>
 </div>
 
@@ -24,12 +17,11 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="passwordinput">Password</label>
   <div class="col-md-4">
-    <input id="passwordinput" name="passwordinput" type="password" placeholder="Enter your password" class="form-control input-md" required="required">
-    
+    <input id="password" name="password" type="password" placeholder="Enter your password" class="form-control input-md" required="required"ng-model="user.password">    
   </div>
 </div>
 
-<!-- Multiple Checkboxes (inline) -->
+<!-- Multiple Check boxes (in line) -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="checkbox"></label>
   <div class="col-md-4">
@@ -44,13 +36,10 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="singlebutton"></label>
   <div class="col-md-4">
-    <button id="singlebutton" name="singlebutton" class="btn btn-primary">LOGIN</button>
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary" ng-click="validate()">LOGIN</button>
   </div>
 </div>
 
 </fieldset>
 </form>
-
-</body>
-
-</html>
+</div>

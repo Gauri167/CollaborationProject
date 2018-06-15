@@ -39,7 +39,7 @@ public class UserTest {
 		boolean result= userDAO.addUser(user);
 		assertTrue("Add User Test Case",result);
 	}
-   
+    @Ignore   
 	@Test
 	public void testUpdateUser() {
     	user=userDAO.getUser("gauri@gmail.com");
@@ -66,5 +66,14 @@ public class UserTest {
 	public void testGetAllUsers() {
 		fail("Not yet implemented");
 	}
+    
+    @Test
+    public void testValidate() {
+    	User user=userDAO.validate("gauri1697@yahoo.com","123");
+    	boolean status=true;
+    	if(user==null)
+    		status=false;
+    	assertTrue("Validate User Test Case",status);
+    }
 
 }
