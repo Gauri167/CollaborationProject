@@ -2,6 +2,8 @@ package com.blog.test;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -26,7 +28,7 @@ public class BlogTest {
 		context.refresh();
 		blogDAO=(BlogDAO) context.getBean("blogDAO");
 	}
-
+    @Ignore
 	@Test
 	public void testAddBlog() {
 		blog=new Blog();
@@ -57,10 +59,14 @@ public class BlogTest {
 	public void testGetBlog() {
 		fail("Not yet implemented");
 	}
-	@Ignore
+	
 	@Test
 	public void testGetBlogList() {
-		fail("Not yet implemented");
+		List<Blog> list=blogDAO.approvedBlogList();
+		boolean status=false;
+		if(list.size()>0)
+			status=true;
+		assertTrue("Approved Blog List Test",status);
 	}
 
 }

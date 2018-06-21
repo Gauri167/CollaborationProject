@@ -6,6 +6,7 @@ var app=angular.module("myApp",["ngRoute"]);
 		.when("/login",{templateUrl:"login.html"})
 		.when("/register",{templateUrl:"register.html"})
 		.when("/addBlog",{templateUrl:"addBlog.html"})
+		.when("/approvedBlogs",{templateUrl:"approvedBlogs.html"})
 		.when("/acceptBlog",{templateUrl:"acceptBlog.html"})
 		.when("/addJob",{templateUrl:"job.html"});
 	});

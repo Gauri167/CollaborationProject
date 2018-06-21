@@ -10,5 +10,7 @@ public interface BlogDAO {
 	public boolean updateBlog(Blog blog);
 	public boolean deleteBlog(int id);
 	public Blog getBlog(int id);
-	public List<Blog> getBlogList();
+	public List<Blog> approvedBlogList();
+	public List<Blog> notApprovedBlogList();
+	public List<Blog> rejectedBlogList();
 }

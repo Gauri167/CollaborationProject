@@ -23,6 +23,7 @@ public class JobDAOImpl implements JobDAO {
 	public boolean addJob(Job job) {
 		try {
 			job.setPostedOn(new Date());
+			job.setActive(true);
 			System.out.println("line 26 of addJobIMPL");
 			sessionFactory.getCurrentSession().save(job);
 			//sessionFactory.getCurrentSession().getTransaction().commit();
@@ -65,9 +66,19 @@ public class JobDAOImpl implements JobDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Job> getAllJobs() {
+	public List<Job> getActiveJobs() {
 		try {
-			return sessionFactory.getCurrentSession().createQuery("From Job").list();
+			return sessionFactory.getCurrentSession().createQuery("From Job where active=true").list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Job> getInactiveJobs() {
+		try {
+			return sessionFactory.getCurrentSession().createQuery("From Job where active=false").list();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			return null;

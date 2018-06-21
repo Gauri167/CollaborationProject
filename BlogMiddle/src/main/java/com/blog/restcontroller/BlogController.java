@@ -55,12 +55,30 @@ public class BlogController {
 	}
 	
 	@GetMapping(value="/blogList")
-	public ResponseEntity<List<Blog>> getBlogList()
+	public ResponseEntity<?> getBlogList()
 	{
-		List<Blog> list=blogDAO.getBlogList();
+		List<Blog> list=blogDAO.approvedBlogList();
+		/*String jsonInString="";
+		List<String> nlist = null;*/
+		if(list.size()>0) {
+			/*System.out.println(list.size());
+			ObjectMapper mapper = new ObjectMapper();
+			for(Blog nblog:list)
+			{
+			
+			}*/
+			return new ResponseEntity<List<Blog>>(list,HttpStatus.OK);
+		}
+			return new ResponseEntity<String>("unsuccess",HttpStatus.NOT_FOUND);
+	}
+	
+	@GetMapping(value="/tobeApprovedBlogs")
+	public ResponseEntity<List<Blog>> tobeApprovedBlogList()
+	{
+		List<Blog> list=blogDAO.notApprovedBlogList();
 		if(list.size()>0)
 			return new ResponseEntity<List<Blog>>(list,HttpStatus.OK);
-		else
+		else 
 			return new ResponseEntity<List<Blog>>(list,HttpStatus.NOT_FOUND);
 	}
 }

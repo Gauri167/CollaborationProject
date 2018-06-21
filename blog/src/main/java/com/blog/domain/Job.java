@@ -26,6 +26,7 @@ public class Job {
 	private Date postedOn;
 	@JsonFormat(shape=JsonFormat.Shape.STRING,pattern="dd-MM-yyyy")
 	private Date applyLastDate;
+	private boolean active;//admin updates the field
 	
 	public int getId() {
 		return id;
@@ -74,6 +75,12 @@ public class Job {
 	}
 	public void setApplyLastDate(Date applyLastDate) {
 		this.applyLastDate = applyLastDate;
+	}
+	public boolean isActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 	
 }

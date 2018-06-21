@@ -1,0 +1,13 @@
+<div ng-controller="BlogController">
+<h3>Blogs</h3>
+{{blogData}}
+<table ng-repeat="blog in blogData">
+<thead>Blogs</thead>
+<tr>
+<td>Blog:- {{blog.title}}</td>
+</tr>
+<tr>
+<td>Posted By:- {{blog.postedBy}}</td>
+</tr>
+</table>
+</div>

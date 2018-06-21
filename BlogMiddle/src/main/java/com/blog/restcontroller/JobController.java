@@ -67,13 +67,23 @@ public class JobController {
 			return new ResponseEntity<Job>(job,HttpStatus.OK);
 	}
 	
-	@GetMapping(value="/showAllJobs")
-	public ResponseEntity<List<Job>> showAllJobs()
+	@GetMapping(value="/activeJobs")
+	public ResponseEntity<List<Job>> showActiveJobs()
 	{
-		List<Job> list=jobDAO.getAllJobs();
+		List<Job> list=jobDAO.getActiveJobs();
 		if(list.size()>0)
 			return new ResponseEntity<List<Job>>(list,HttpStatus.OK);
 		else
 			return new ResponseEntity<List<Job>>(list,HttpStatus.NOT_FOUND);
+	}
+	
+	@GetMapping(value="/inactiveJobs")
+	public ResponseEntity<List<Job>> showInactiveJobs()
+	{
+		List<Job> list=jobDAO.getInactiveJobs();
+		if(list.size()>0)
+			return new ResponseEntity<List<Job>>(list, HttpStatus.OK);
+		else
+			return new ResponseEntity<List<Job>>(list, HttpStatus.NOT_FOUND);
 	}
 }

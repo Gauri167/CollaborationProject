@@ -10,5 +10,6 @@ public interface JobDAO {
 	public boolean updateJob(Job job);
 	public boolean deleteJob(int id);
 	public Job getJob(int id);
-	public List<Job> getAllJobs();
+	public List<Job> getActiveJobs();
+	public List<Job> getInactiveJobs();
 }

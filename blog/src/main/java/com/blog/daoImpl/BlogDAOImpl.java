@@ -64,9 +64,29 @@ public class BlogDAOImpl implements BlogDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Blog> getBlogList() {
+	public List<Blog> approvedBlogList() {
 		try {
-			return sessionFactory.getCurrentSession().createQuery("From Blog").list();
+			return sessionFactory.getCurrentSession().createQuery("From Blog where status='A'").list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Blog> notApprovedBlogList() {
+		try {
+			return sessionFactory.getCurrentSession().createQuery("From Blog where status='NA'").list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Blog> rejectedBlogList() {
+		try {
+			return sessionFactory.getCurrentSession().createQuery("From Blog where status='R'").list();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			return null;
