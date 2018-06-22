@@ -1,5 +1,6 @@
 package com.blog.restcontroller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.blog.dao.BlogDAO;
 import com.blog.domain.Blog;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 public class BlogController {
@@ -54,20 +57,29 @@ public class BlogController {
 		return new ResponseEntity<String>("Success",HttpStatus.OK);
 	}
 	
+	
 	@GetMapping(value="/blogList")
 	public ResponseEntity<?> getBlogList()
 	{
 		List<Blog> list=blogDAO.approvedBlogList();
-		/*String jsonInString="";
-		List<String> nlist = null;*/
+		String jsonInString="";
+		List<String> nlist=new ArrayList<String>();
+		
 		if(list.size()>0) {
-			/*System.out.println(list.size());
+			System.out.println(list.size());
 			ObjectMapper mapper = new ObjectMapper();
 			for(Blog nblog:list)
 			{
-			
-			}*/
-			return new ResponseEntity<List<Blog>>(list,HttpStatus.OK);
+				try {
+					jsonInString = mapper.writeValueAsString(nblog);
+					System.out.println(jsonInString);
+					nlist.add(jsonInString);
+					
+				} catch (JsonProcessingException e) {
+					e.printStackTrace();
+				}
+			}
+			return new ResponseEntity<List<String>>(nlist,HttpStatus.OK);
 		}
 			return new ResponseEntity<String>("unsuccess",HttpStatus.NOT_FOUND);
 	}

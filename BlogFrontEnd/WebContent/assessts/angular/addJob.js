@@ -1,4 +1,3 @@
-var app=angular.module("myApp");
 app.controller("JobController",function($scope,$http,$location,$rootScope){
 	$scope.job={"jobDesignation":'',"jobDescription":'',"company":'',"location":'',"salary":'',"applyLastDate":''};
 	$scope.addJob=function(){

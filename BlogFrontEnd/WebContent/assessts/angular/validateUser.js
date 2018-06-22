@@ -1,4 +1,3 @@
-
 app.controller("LoginController",function($scope,$http,$location,$rootScope){
 	$scope.user={"email":'',"password":''};
 	$scope.validate=function(){

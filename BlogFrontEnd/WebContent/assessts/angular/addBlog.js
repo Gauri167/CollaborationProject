@@ -1,8 +1,8 @@
-var app=angular.module("myApp");
 app.controller("BlogController",function($scope,$http,$location,$rootScope){
+	var bCtrl=this;
 	$scope.blog={"title":'',"content":'',"username":'',"postedBy":''};
 	$scope.blogData;
-	
+	console.log("Blog add Function");
 	$scope.addBlog=function(){
 		console.log("Add Blog Function");
 		$http.post('http://localhost:8084/BlogMiddle/addBlog',$scope.blog).then(function(response){

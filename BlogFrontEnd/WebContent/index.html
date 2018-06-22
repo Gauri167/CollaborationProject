@@ -37,7 +37,7 @@
    <li><a href="#!/register">Register</a></li>
    <!-- BLOG -->
     <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Blog</a>\
+    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Blog</a>
     <div class="dropdown-menu">
     <a class="dropdown-item" href="#!/addBlog">Post Blog</a><br>
     <a class="dropdown-item" href="#!/approvedBlogs">My Approved Blogs</a><br>
@@ -45,7 +45,14 @@
     </div>
     </li>
     
-     <li><a href="#!/addJob">AddJob</a></li>
+     <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">Job</a>
+     <ul class="dropdown-menu">
+     <li><a href="#!/addJob" ng-show="currentUser.role=='A'">Add Job</a></li>
+     <li><a href="#!/activeJobs">Show Jobs</a></li>
+     <li><a href="#!/inactiveJobs" ng-show="currentUser.role=='A'">Inactive Jobs</a></li>
+     </ul>
+     </li>
+     
    </ul>
   <!--  <div class="input-group">
                             <input type="text" class="form-control" name="x" placeholder="Search term..." required="required">

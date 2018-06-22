@@ -1,0 +1,12 @@
+<div class="panel panel-info">
+<div class="panel-heading">Jobs</div>
+<div class="panel-body">
+<ul>
+<li ng-repeat="job in activeJobs">
+<b>Job:</b>{{job.jobDesignation}}<br>
+<b>Job Description:</b>{{job.jobDescription}}<br>
+<b>Posted On:</b>{{job.postedOn|date:'medium'}}<br>
+</li>
+</ul>
+</div>
+</div>

@@ -1,4 +1,3 @@
-var app=angular.module("myApp");
 app.controller("UserController",function($scope,$http,$location,$rootScope){
 	
 	$scope.user={"email":'',"password":'',"username":'',"isOnline":'false',"phone":''};
