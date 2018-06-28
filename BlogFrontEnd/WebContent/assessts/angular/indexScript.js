@@ -12,5 +12,6 @@ var app=angular.module("myApp",["ngRoute"]);
 		.when("/addJob",{templateUrl:"job.html"})
 		.when("/activeJobs",{templateUrl:"activeJobs.html"})
 		.when("/inactiveJobs",{templateUrl:"inactiveJobs.html"})
+		.when("/showblog",{templateUrl:"showBlog.html"})
 		.otherwise({templateUrl:"home.html"});
 	});

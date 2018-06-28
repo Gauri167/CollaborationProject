@@ -1,10 +1,12 @@
 <div ng-controller="BlogController">
 <h3>Blogs</h3>
+{{error}}
+<button ng-click="approvedBlogList()">BLOG TABLE</button>
 {{blogData}}
 <table ng-repeat="blog in blogData">
 <thead>Blogs</thead>
 <tr>
-<td>Blog:- {{blog.title}}</td>
+<td>Blog:- <a ng-click="showBlog(blog.blogId)">{{blog.title}}</a></td>
 </tr>
 <tr>
 <td>Posted By:- {{blog.postedBy}}</td>

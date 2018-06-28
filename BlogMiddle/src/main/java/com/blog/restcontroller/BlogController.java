@@ -3,6 +3,8 @@ package com.blog.restcontroller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.blog.dao.BlogDAO;
+import com.blog.dao.BlogLikesDAO;
+import com.blog.dao.UserDAO;
 import com.blog.domain.Blog;
+import com.blog.domain.BlogLikes;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -22,6 +27,13 @@ public class BlogController {
 	
 	@Autowired
 	BlogDAO blogDAO;
+	
+	@Autowired
+	private UserDAO userDAO;
+	
+	@Autowired
+	private BlogLikesDAO blogLikesDAO;
+	
 	
 	/*@GetMapping(value="/demo")
 	public ResponseEntity<String> demoPurpose(){
@@ -57,6 +69,24 @@ public class BlogController {
 		return new ResponseEntity<String>("Success",HttpStatus.OK);
 	}
 	
+	@GetMapping(value="/showBlog/{blogId}")
+	public ResponseEntity<?> showBlog(@PathVariable("blogId") int blogId){
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonInString="";
+		Blog mblog=blogDAO.getBlog(blogId);
+		try {
+			jsonInString = mapper.writeValueAsString(mblog);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		System.out.println(blogId);
+		System.out.println(mblog.getContent());
+		if(mblog==null)
+			return new ResponseEntity<String>("Cannot fetch blog",HttpStatus.NOT_FOUND);
+		else 
+			return new ResponseEntity<String>(jsonInString,HttpStatus.OK);
+	}
+	
 	
 	@GetMapping(value="/blogList")
 	public ResponseEntity<?> getBlogList()
@@ -79,7 +109,7 @@ public class BlogController {
 					e.printStackTrace();
 				}
 			}
-			return new ResponseEntity<List<String>>(nlist,HttpStatus.OK);
+			return new ResponseEntity<List<Blog>>(list,HttpStatus.OK);
 		}
 			return new ResponseEntity<String>("unsuccess",HttpStatus.NOT_FOUND);
 	}
@@ -92,5 +122,23 @@ public class BlogController {
 			return new ResponseEntity<List<Blog>>(list,HttpStatus.OK);
 		else 
 			return new ResponseEntity<List<Blog>>(list,HttpStatus.NOT_FOUND);
+	}
+	
+	@GetMapping(value="/hasUserLikedBlog")
+	public ResponseEntity<?> hasUserLikedBlog(@PathVariable int blogId,HttpSession httpSession){
+		String username=(String) httpSession.getAttribute("username");
+		BlogLikes blogLikes=blogLikesDAO.hasUserLikedBlog(blogId, username);
+		System.out.println("hasUserLikedBlog controller");
+		return new ResponseEntity<BlogLikes>(blogLikes,HttpStatus.OK);
+		//if likes is null,response.data=''
+		//if likes is 1 object,response.data={bloglikes object}
+		
+	}
+	
+	@GetMapping(value="/updateBlogLikes")
+	public ResponseEntity<?> updateBlogLikes(@PathVariable int blogId,HttpSession httpSession){
+		String email=(String) httpSession.getAttribute("email");
+		blogLikesDAO.updateBlogLikes(blogId, email);
+		return new ResponseEntity<String>("update blog likes controller",HttpStatus.OK);
 	}
 }

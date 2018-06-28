@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="assessts/css/glyphiconColor.css">
+<!-- <div ng-controller="BlogController">
+{{thisBlog.blogId}}
+<b ng-bind="thisBlog.blogId"></b>
+<b>{{thisBlog.title}}</b><br>
+<b>{{thisBlog.content}}</b><br>
+<b>{{thisBlog.postedBy}}</b><br>
+<a ng-click="updateLikes()/{blogId}"><span class="glyphicon glyphicon-thumbs-up" ng-class="isLiked?'liked':'default'"></span></a>
+{{thisBlog.likes}}
+</div> -->
+
+
+<div class="container"   ng-controller="BlogController">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<p ng-bind-html="title">
+			{{thisBlog.blogId}}
+			</p><br> <b>Author :
+				{{thisBlog.postedBy}}</b><br>
+			<b>Posted On: {{thisBlog.postedOn | date:'medium'}}</b>
+		</div>
+		<div class="panel-body">
+		    <p ng-bind-html="content">{{thisBlog.content}}</p><!-- content is blogPost.blogContent as HTML -->
+		</div>
+	</div>
+
+</div>
+<!--  $scope.isLiked = true, glyphicon in blue -->
+<!-- $scope.isLiked=false, glyphicono in black -->
+<div>
+<div ng-show="isLiked"><!-- result of the query select * from blogpostlikes where post_id=? and u_email=? -->
+<a><span class="glyphicon glyphicon-thumbs-up" style="color:blue" ng-click="updateLikes(blogPost.id)"></span></a>
+<!-- delete data from blogpostlikes and decrement the number of likes -->
+</div>
+<div ng-show="!isLiked">
+<a><span class="glyphicon glyphicon-thumbs-up" style="color:black" ng-click="updateLikes(blogPost.id)"></span></a>
+<!--  insert data into blogpostlikes and increment the number of likes -->
+</div>
+{{thisBlog.likes}} likes
+</div>

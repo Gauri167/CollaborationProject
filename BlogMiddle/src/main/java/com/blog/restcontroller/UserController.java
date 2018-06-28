@@ -2,6 +2,8 @@ package com.blog.restcontroller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -93,14 +95,16 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/validateUser")
-	public ResponseEntity<User> validateUser(@RequestBody User user)
+	public ResponseEntity<User> validateUser(@RequestBody User user,HttpSession httpSession)
 	{
 		String email=user.getEmail();
 		String password=user.getPassword();
 		User vUser=userDAO.validate(email, password);
 		if(vUser==null)
 			return new ResponseEntity<User>(vUser,HttpStatus.NOT_FOUND);
-		else
+		else {
+			httpSession.setAttribute("username",vUser.getUsername());
 			return new ResponseEntity<User>(vUser,HttpStatus.OK);
+		}
 	}
 }
