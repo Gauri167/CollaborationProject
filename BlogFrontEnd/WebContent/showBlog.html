@@ -11,16 +11,17 @@
 
 
 <div class="container"   ng-controller="BlogController">
+{{ob.content}}
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<p ng-bind-html="title">
-			{{thisBlog.blogId}}
+			{{ob.blogId}}
 			</p><br> <b>Author :
-				{{thisBlog.postedBy}}</b><br>
-			<b>Posted On: {{thisBlog.postedOn | date:'medium'}}</b>
+				{{ob.postedBy}}</b><br>
+			<b>Posted On: {{ob.postedOn | date:'medium'}}</b>
 		</div>
 		<div class="panel-body">
-		    <p ng-bind-html="content">{{thisBlog.content}}</p><!-- content is blogPost.blogContent as HTML -->
+		    <p ng-bind-html="content">{{ob.content}}</p><!-- content is blogPost.blogContent as HTML -->
 		</div>
 	</div>
 
@@ -36,5 +37,5 @@
 <a><span class="glyphicon glyphicon-thumbs-up" style="color:black" ng-click="updateLikes(blogPost.id)"></span></a>
 <!--  insert data into blogpostlikes and increment the number of likes -->
 </div>
-{{thisBlog.likes}} likes
+{{ob.likes}} likes
 </div>

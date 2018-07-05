@@ -74,6 +74,8 @@ public class BlogController {
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonInString="";
 		Blog mblog=blogDAO.getBlog(blogId);
+		if(mblog==null)
+			return new ResponseEntity<String>("Cannot fetch blog",HttpStatus.NOT_FOUND);
 		try {
 			jsonInString = mapper.writeValueAsString(mblog);
 		} catch (JsonProcessingException e) {
@@ -81,10 +83,7 @@ public class BlogController {
 		}
 		System.out.println(blogId);
 		System.out.println(mblog.getContent());
-		if(mblog==null)
-			return new ResponseEntity<String>("Cannot fetch blog",HttpStatus.NOT_FOUND);
-		else 
-			return new ResponseEntity<String>(jsonInString,HttpStatus.OK);
+			return new ResponseEntity<Blog>(mblog,HttpStatus.OK);
 	}
 	
 	

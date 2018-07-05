@@ -28,7 +28,7 @@ app.controller("BlogController",function($scope,$http,$location,$rootScope,$log)
 		console.log("Get Blog Details");
 		$http.get('http://localhost:8084/BlogMiddle/showBlog/'+blogId).then(function(response){
 			$scope.thisBlog=response.data;
-			alert($scope.thisBlog.blogId);
+			$rootScope.ob=$scope.thisBlog;
 			$log.info(response);
 		$scope.message=response.statusText;
 		console.log('Status Text:'+response.statusText);

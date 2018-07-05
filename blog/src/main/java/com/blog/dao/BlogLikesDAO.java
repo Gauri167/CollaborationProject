@@ -1,5 +1,6 @@
 package com.blog.dao;
 
+import com.blog.domain.Blog;
 import com.blog.domain.BlogLikes;
 
 public interface BlogLikesDAO {
@@ -9,6 +10,6 @@ public interface BlogLikesDAO {
 	//if null is returned display glyphicon in black
 	//if 1 object is returned display glyhpicon in blue
 	
-	boolean updateBlogLikes(int blogId,String username);
+	Blog updateBlogLikes(int blogId,String username);
 }
 
