@@ -103,7 +103,7 @@ public class UserController {
 		if(vUser==null)
 			return new ResponseEntity<User>(vUser,HttpStatus.NOT_FOUND);
 		else {
-			httpSession.setAttribute("username",vUser.getUsername());
+			httpSession.setAttribute("email",vUser.getEmail());
 			return new ResponseEntity<User>(vUser,HttpStatus.OK);
 		}
 	}

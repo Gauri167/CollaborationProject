@@ -26,16 +26,42 @@
 	</div>
 
 </div>
+
+<button ng-click="blogLikes(ob.blogId)">Show Likes</button>
+
 <!--  $scope.isLiked = true, glyphicon in blue -->
 <!-- $scope.isLiked=false, glyphicono in black -->
 <div>
 <div ng-show="isLiked"><!-- result of the query select * from blogpostlikes where post_id=? and u_email=? -->
-<a><span class="glyphicon glyphicon-thumbs-up" style="color:blue" ng-click="updateLikes(blogPost.id)"></span></a>
+<a><span class="glyphicon glyphicon-thumbs-up" style="color:blue" ng-click="updateLikes(ob.blogId)"></span></a>
 <!-- delete data from blogpostlikes and decrement the number of likes -->
 </div>
 <div ng-show="!isLiked">
-<a><span class="glyphicon glyphicon-thumbs-up" style="color:black" ng-click="updateLikes(blogPost.id)"></span></a>
+<a><span class="glyphicon glyphicon-thumbs-up" style="color:black" ng-click="updateLikes(ob.blogId)"></span></a>
 <!--  insert data into blogpostlikes and increment the number of likes -->
 </div>
 {{ob.likes}} likes
+
+<button ng-controller="CommentController" ng-click="demo()">DEMO</button>
+
+<form method="post">
+<div>
+<h4>Add a Comment...</h4>
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Comment</label>  
+  <div class="col-md-5">
+  {{ob.blogId}}
+  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" ng-model="blogComment.commentText">
+  
+  <div class="form-group">
+  <label class="col-md-4 control-label" for=""></label>
+  <div class="col-md-4">
+    <button  class="btn btn-success" ng-click="addBlogComment(ob.blogId)">POST</button>
+  </div>
+</div>
+    
+  </div>
+</div>
+</div>
+</form>
 </div>

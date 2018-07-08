@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.blog.dao.BlogCommentDAO;
 import com.blog.dao.BlogDAO;
 import com.blog.dao.BlogLikesDAO;
 import com.blog.dao.UserDAO;
 import com.blog.domain.Blog;
+import com.blog.domain.BlogComment;
 import com.blog.domain.BlogLikes;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,6 +29,9 @@ public class BlogController {
 	
 	@Autowired
 	BlogDAO blogDAO;
+	
+	@Autowired
+	BlogCommentDAO blogCommentDAO;
 	
 	@Autowired
 	private UserDAO userDAO;
@@ -139,5 +144,35 @@ public class BlogController {
 		String email=(String) httpSession.getAttribute("email");
 		blogLikesDAO.updateBlogLikes(blogId, email);
 		return new ResponseEntity<String>("update blog likes controller",HttpStatus.OK);
+	}
+	
+	@PostMapping(value="/addBlogComment")
+	public ResponseEntity<?> addBlogComment(@RequestBody BlogComment blogComment,HttpSession httpSession)
+	{
+		String email=(String) httpSession.getAttribute("email");
+		blogComment.setUsername(email);
+		if(blogCommentDAO.addComment(blogComment))
+			return new ResponseEntity<String>("Comment Added Successfully",HttpStatus.OK);
+		else
+			return new ResponseEntity<String>("Cannot add comment",HttpStatus.NOT_FOUND);
+	}
+	
+	@PostMapping(value="/deleteBlogComment/{commentId}")
+	public ResponseEntity<?> deleteBlogComment(@PathVariable("commentId") int commentId)
+	{
+		if(blogCommentDAO.deleteComment(commentId))
+			return new ResponseEntity<String>("COmmenet deleted Successfully",HttpStatus.OK);
+		else
+			return new ResponseEntity<String>("Cannot delete comment",HttpStatus.NOT_FOUND);
+	}
+	
+	@GetMapping(value="/blogCommenetList")
+	public ResponseEntity<?> blogCommentList()
+	{
+		List<BlogComment> list=blogCommentDAO.commentList();
+		if(list.size()>0)
+			return new ResponseEntity<List<BlogComment>>(list,HttpStatus.OK);
+		else
+			return new ResponseEntity<String>("No Comment Found",HttpStatus.NOT_FOUND);
 	}
 }
