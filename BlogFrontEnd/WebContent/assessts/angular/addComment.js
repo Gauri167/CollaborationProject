@@ -1,20 +1,23 @@
-app.controller("CommentController", function($scope) {
+app.controller("CommentController", function($http,$scope) {
 	
 	$scope.blogComment = {
-		"commentText" : "",
-		"blogId" : ""
-	};
+			"commentText" : "",
+			"blogId" : ""
+		};
 	console.log("Blog add comment Controller");
 
 
 
-	/*
-	 * $scope.addBlogComment = function(blogId) { console.log("Add Comment
-	 * Function");
-	 * BlogService.addBlogComment(blogComment).then(function(response) {
-	 * $scope.message = response.statusText; console.log('Status Text:' +
-	 * response.statusText); }); }
-	 */
+	
+	  $scope.addBlogComment = function(blogId) {
+      console.log("Add CommentFunction");
+      alert(blogId);
+      $http.post('http://localhost:8084/BlogMiddle/addBlogComment/'+blogId, $scope.blogComment).then(function(response) {
+	  $scope.message = response.statusText; console.log('Status Text:' +
+	  response.statusText);
+	  });
+      }
+	 
 
 	$scope.demo = function() {
 		console.log("DEMO FUNCTION");

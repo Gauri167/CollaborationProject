@@ -2,31 +2,34 @@ package com.blog.daoImpl;
 
 import javax.transaction.Transactional;
 
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.blog.dao.BlogDAO;
 import com.blog.dao.BlogLikesDAO;
 import com.blog.domain.Blog;
 import com.blog.domain.BlogLikes;
 import com.blog.domain.User;
 
-@SuppressWarnings("deprecation")
 @Repository
 @Transactional
 public class BlogLikesDAOImpl implements BlogLikesDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	@Autowired
+	private BlogDAO blogDAO;
 
 	public BlogLikes hasUserLikedBlog(int blogId, String username) {
 		Session session=sessionFactory.getCurrentSession();
 		@SuppressWarnings("rawtypes")
-		Query query=session.createQuery("from BlogLikes where blog.id=? and user.username=?");
-		query.setInteger(0, blogId);
-		query.setString(1,username);
+		Query query=session.createQuery("from BlogLikes where blog.id=:id and user.username=:username").setParameter("username",username).setParameter("id",blogId);
+		/*query.setParameter(0, blogId);
+		query.setParameter(1,username);*/
 		return (BlogLikes) query.uniqueResult();//it will return either null or 1 object
 	}
 
@@ -54,6 +57,7 @@ public class BlogLikesDAOImpl implements BlogLikesDAO {
 			blog.setLikes(blog.getLikes()-1);
 			session.update(blog);
 		}
+		blogDAO.updateBlog(blog);
 		return blog;
 	}
 

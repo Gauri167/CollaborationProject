@@ -26,7 +26,7 @@
 	</div>
 
 </div>
-
+<div ng-controller="LikesController">
 <button ng-click="blogLikes(ob.blogId)">Show Likes</button>
 
 <!--  $scope.isLiked = true, glyphicon in blue -->
@@ -41,11 +41,12 @@
 <!--  insert data into blogpostlikes and increment the number of likes -->
 </div>
 {{ob.likes}} likes
+</div>
 
 <button ng-controller="CommentController" ng-click="demo()">DEMO</button>
 
 <form method="post">
-<div>
+<div ng-controller="CommentController">
 <h4>Add a Comment...</h4>
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Comment</label>  
