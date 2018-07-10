@@ -26,8 +26,8 @@
 	</div>
 
 </div>
-<div ng-controller="LikesController">
-<button ng-click="blogLikes(ob.blogId)">Show Likes</button>
+<div ng-controller="LikesController" data-ng-init="blogLikes(ob.blogId)">
+<!-- <button ng-click=>Show Likes</button> -->
 
 <!--  $scope.isLiked = true, glyphicon in blue -->
 <!-- $scope.isLiked=false, glyphicono in black -->
@@ -40,7 +40,8 @@
 <a><span class="glyphicon glyphicon-thumbs-up" style="color:black" ng-click="updateLikes(ob.blogId)"></span></a>
 <!--  insert data into blogpostlikes and increment the number of likes -->
 </div>
-{{ob.likes}} likes
+<!-- {{ob.likes}} likes -->
+{{likedBlog.likes}} likes
 </div>
 
 <button ng-controller="CommentController" ng-click="demo()">DEMO</button>

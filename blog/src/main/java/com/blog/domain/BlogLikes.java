@@ -19,7 +19,7 @@ public class BlogLikes {
 	@ManyToOne
 	private User user;
 	private int blogId;
-	private int username;
+	private String username;
 	
 	public int getLikeId() {
 		return likeId;
@@ -45,11 +45,11 @@ public class BlogLikes {
 	public void setBlogId(int blogId) {
 		this.blogId = blogId;
 	}
-	public int getUsername() {
+	public String getUsername() {
 		return username;
 	}
-	public void setUsername(int username) {
-		this.username = username;
+	public void setUsername(String email) {
+		this.username = email;
 	}
 
 }

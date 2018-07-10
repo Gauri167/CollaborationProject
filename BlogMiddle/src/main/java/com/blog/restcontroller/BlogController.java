@@ -143,8 +143,8 @@ public class BlogController {
 	public ResponseEntity<?> updateBlogLikes(@PathVariable int blogId,HttpSession httpSession){
 		String email=(String) httpSession.getAttribute("email");
 		System.out.println("Update Likes Controller");
-		blogLikesDAO.updateBlogLikes(blogId, email);
-		return new ResponseEntity<String>("update blog likes controller",HttpStatus.OK);
+		Blog  blog=blogLikesDAO.updateBlogLikes(blogId, email);
+		return new ResponseEntity<Blog>(blog,HttpStatus.OK);
 	}
 	
 	@PostMapping(value="/addBlogComment/{blogId}")

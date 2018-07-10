@@ -26,8 +26,9 @@ public class BlogLikesDAOImpl implements BlogLikesDAO {
 
 	public BlogLikes hasUserLikedBlog(int blogId, String username) {
 		Session session=sessionFactory.getCurrentSession();
+		System.out.println("line 29 of blogLikesDAOImpl");
 		@SuppressWarnings("rawtypes")
-		Query query=session.createQuery("from BlogLikes where blog.id=:id and user.username=:username").setParameter("username",username).setParameter("id",blogId);
+		Query query=session.createQuery("from BlogLikes where blog.blogId=:blogId and user.email=:email").setParameter("email",username).setParameter("blogId",blogId);
 		/*query.setParameter(0, blogId);
 		query.setParameter(1,username);*/
 		return (BlogLikes) query.uniqueResult();//it will return either null or 1 object
@@ -37,6 +38,8 @@ public class BlogLikesDAOImpl implements BlogLikesDAO {
 		BlogLikes blogLikes=hasUserLikedBlog(blogId, email);
 		Session session=sessionFactory.getCurrentSession();
 		Blog blog=session.get(Blog.class,blogId);
+		System.out.println(blogLikes);
+		System.out.println("line 41 of blogLikesDAOImpl");
 		if(blogLikes==null) {
 			//glyphicon is in black
 			//insert and increment
@@ -45,6 +48,8 @@ public class BlogLikesDAOImpl implements BlogLikesDAO {
 			User user=session.get(User.class,email);
 			likes.setBlog(blog);
 			likes.setUser(user);
+			likes.setBlogId(blogId);
+			likes.setUsername(email);
 			session.save(likes);
 			blog.setLikes(blog.getLikes()+1);
 			session.update(blog);

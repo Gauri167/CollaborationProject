@@ -1,9 +1,7 @@
-<div ng-controller="BlogController">
+<div ng-controller="BlogController" data-ng-init="approvedBlogList()">
 <h3>Blogs</h3>
 {{error}}
-<button ng-click="approvedBlogList()">BLOG TABLE</button>
 <table ng-repeat="blog in blogData">
-<thead>Blogs</thead>
 <tr>
 <td>Blog:- <a ng-click="showBlog(blog.blogId)">{{blog.title}}</a></td>
 </tr>
