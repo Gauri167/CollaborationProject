@@ -1,5 +1,4 @@
-app.controller("BlogController", function($scope, $http, $location, $rootScope,
-		$log) {
+app.controller("BlogController", function($scope, $http, $location, $rootScope,$log) {
 	var bCtrl = this;
 	$scope.blog = {
 		"title" : '',

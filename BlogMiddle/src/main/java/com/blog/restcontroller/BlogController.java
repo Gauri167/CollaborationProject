@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.blog.dao.BlogCommentDAO;
 import com.blog.dao.BlogDAO;
 import com.blog.dao.BlogLikesDAO;
-import com.blog.dao.UserDAO;
 import com.blog.domain.Blog;
 import com.blog.domain.BlogComment;
 import com.blog.domain.BlogLikes;
@@ -32,9 +31,6 @@ public class BlogController {
 	
 	@Autowired
 	BlogCommentDAO blogCommentDAO;
-	
-	@Autowired
-	private UserDAO userDAO;
 	
 	@Autowired
 	private BlogLikesDAO blogLikesDAO;
@@ -77,12 +73,11 @@ public class BlogController {
 	@GetMapping(value="/showBlog/{blogId}")
 	public ResponseEntity<?> showBlog(@PathVariable("blogId") int blogId){
 		ObjectMapper mapper = new ObjectMapper();
-		String jsonInString="";
 		Blog mblog=blogDAO.getBlog(blogId);
 		if(mblog==null)
 			return new ResponseEntity<String>("Cannot fetch blog",HttpStatus.NOT_FOUND);
 		try {
-			jsonInString = mapper.writeValueAsString(mblog);
+			mapper.writeValueAsString(mblog);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}

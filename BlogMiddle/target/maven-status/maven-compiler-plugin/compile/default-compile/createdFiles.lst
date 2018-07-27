@@ -1,0 +1,8 @@
+com\blog\restcontroller\UserController.class
+com\blog\config\WebResolver.class
+com\blog\restcontroller\ForumController.class
+com\blog\restcontroller\FriendController.class
+com\blog\restcontroller\JobController.class
+com\blog\controller\HomeController.class
+com\blog\config\WebIntilizer.class
+com\blog\restcontroller\BlogController.class

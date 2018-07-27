@@ -13,5 +13,9 @@ var app=angular.module("myApp",["ngRoute"]);
 		.when("/activeJobs",{templateUrl:"activeJobs.html"})
 		.when("/inactiveJobs",{templateUrl:"inactiveJobs.html"})
 		.when("/showblog",{templateUrl:"showBlog.html"})
+		.when("/suggestedUsers",{templateUrl:"suggestedFriends.html"})
+		.when("/friendRequests",{templateUrl:"friendRequests.html"})
+		.when("/friendsList",{templateUrl:"friendsList.html"})
+		.when("/chat",{templateUrl:"chat.html"})
 		.otherwise({templateUrl:"home.html"});
 	});

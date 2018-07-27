@@ -18,6 +18,7 @@ import com.blog.dao.FriendDAO;
 import com.blog.domain.Friend;
 import com.blog.domain.User;
 
+@SuppressWarnings("deprecation")
 @Repository("friendDAO")
 @Transactional
 public class FriendDAOImpl implements FriendDAO {
@@ -27,12 +28,12 @@ public class FriendDAOImpl implements FriendDAO {
 
 	public List<User> suggestedUserList(String email) {
 		Session session=sessionFactory.getCurrentSession();
-		@SuppressWarnings({ "rawtypes", "deprecation" })
-		SQLQuery query=session.createSQLQuery("select * from User_Table where email in(select email from User_Table where email!=:email minus(select fromId from Friend_Table where toId=:email union select toId from Friend_Table where fromId=:email))")
+		@SuppressWarnings({ "unchecked" })
+		SQLQuery<User> query=session.createSQLQuery("select * from User_Table where email in(select email from User_Table where email!=:email minus(select fromId from Friend_Table where toId=:email union select toId from Friend_Table where fromId=:email))")
 		                       .setParameter("email",email);
 		query.addEntity(User.class);
-		@SuppressWarnings("unchecked")
 		List<User> suggestedUsers=query.list();
+		System.out.println(suggestedUsers.size());
 		return suggestedUsers;
 	}
 
@@ -50,9 +51,8 @@ public class FriendDAOImpl implements FriendDAO {
 
 	public List<Friend> getAllPendingRequests(String email) {
 		Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("rawtypes")
-		Query query=session.createQuery("from Friend where toId=:toId and status=:status").setParameter("toId",email).setParameter("status",'P');
-		@SuppressWarnings("unchecked")
+		@SuppressWarnings({ "unchecked" })
+		Query<Friend> query=session.createQuery("from Friend where toId=:toId and status=:status").setParameter("toId",email).setParameter("status",'P');
 		List<Friend> list=query.list();
 		return list;
 	}
@@ -69,8 +69,14 @@ public class FriendDAOImpl implements FriendDAO {
 	}
 
 	public List<User> friendsList(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+        @SuppressWarnings("unchecked")
+		SQLQuery<User> query=session.createSQLQuery("select * from User_Table where email in("+
+		                                      "(select fromId from Friend_Table where toId=:email and status='F')"+
+        		                              "union"+"(select toId from Friend_Table where fromId=:email and status='F'))").setParameter("email",email);
+        query.addEntity(User.class);
+        List<User> friends=query.list();
+		return friends;
 	}
 
 }
