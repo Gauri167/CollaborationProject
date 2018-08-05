@@ -13,4 +13,5 @@ public interface BlogDAO {
 	public List<Blog> approvedBlogList();
 	public List<Blog> notApprovedBlogList();
 	public List<Blog> rejectedBlogList();
+	public void acceptBlog(int id);
 }

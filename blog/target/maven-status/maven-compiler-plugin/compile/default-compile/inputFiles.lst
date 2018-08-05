@@ -1,5 +1,6 @@
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\daoImpl\ForumDAOImpl.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\domain\Blog.java
+C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\domain\Message.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\domain\ApplyJob.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dbconfig\DBConfig.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\daoImpl\FriendDAOImpl.java
@@ -14,12 +15,15 @@ C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\domain\Friend.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\daoImpl\UserDAOImpl.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\daoImpl\BlogLikesDAOImpl.java
+C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dao\ChatDAO.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\daoImpl\BlogDAOImpl.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\domain\Job.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dao\UserDAO.java
+C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\daoImpl\ChatDAOImpl.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\domain\ProfilePic.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dao\BlogCommentDAO.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\daoImpl\JobDAOImpl.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dao\FriendDAO.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dao\JobDAO.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\domain\BlogLikes.java
+C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\domain\Chat.java

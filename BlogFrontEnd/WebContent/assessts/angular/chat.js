@@ -1,4 +1,4 @@
-app.controller("ChatController",function($scope,$http,$log,$rootScope){
+app.controller("ChatController",function($scope,$http,$log,$rootScope,$window){
 	$scope.chat={
 		"toId":'',
 		"message":''
@@ -8,11 +8,14 @@ app.controller("ChatController",function($scope,$http,$log,$rootScope){
 	
 	console.log("Chat Controller");
 	
-	$scope.chatFunc=function(){
+	$scope.chatFunc=function(emailId){
 		console.log("Chat Function");
+		alert(emailId)
+	    $scope.chat.toId=emailId;
+	    alert($scope.chat.toId)
 		$http.post('http://localhost:8084/BlogMiddle/saveMessage',$scope.chat).then(function(response){
+			 $scope.messageList();
 			console.log('Status Text:'+response.statusText);
-			$rootScope.emailId='';
 		})
 	}
 	

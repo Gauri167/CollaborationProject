@@ -27,6 +27,7 @@ app.controller("FriendListController",function($scope,$http,$log,$location,$root
 	 
 	 $scope.startChat=function(email){
 		 $location.url('/chat');
+		 alert(email)
 		 $rootScope.emailId=email;
 	 }
 });

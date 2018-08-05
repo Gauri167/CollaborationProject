@@ -92,5 +92,11 @@ public class BlogDAOImpl implements BlogDAO {
 			return null;
 		}
 	}
+	
+	public void acceptBlog(int id) {
+		Blog nblog=getBlog(id);
+		nblog.setStatus("A");
+		updateBlog(nblog);
+	}
 
 }

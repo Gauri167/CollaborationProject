@@ -173,4 +173,10 @@ public class BlogController {
 		else
 			return new ResponseEntity<String>("No Comment Found",HttpStatus.NOT_FOUND);
 	}
+	
+	@PostMapping(value="/acceptBlog/{blogId}")
+	public ResponseEntity<?> acceptBlog(@PathVariable("blogId") int blogId){
+		blogDAO.acceptBlog(blogId);
+		return new ResponseEntity<String>("Blog accepted",HttpStatus.OK);
+	}
 }

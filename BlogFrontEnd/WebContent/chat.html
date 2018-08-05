@@ -5,7 +5,6 @@
 </div>
 
 Message:<input type="text" ng-model="chat.message">
-<input type="hidden" value={{emailId}} ng-model="chat.toId">
-<button ng-click="chatFunc()">Send</button>
+<button ng-click="chatFunc(emailId)">Send</button>
 
 </div>

@@ -1,12 +1,16 @@
 com\blog\domain\User.class
+com\blog\dao\ChatDAO.class
 com\blog\dbconfig\DBConfig.class
 com\blog\domain\Blog.class
 com\blog\dao\BlogCommentDAO.class
+com\blog\domain\Message.class
 com\blog\domain\Job.class
 com\blog\daoImpl\ForumDAOImpl.class
+com\blog\daoImpl\ChatDAOImpl.class
 com\blog\dao\ForumDAO.class
 com\blog\domain\Friend.class
 com\blog\daoImpl\BlogDAOImpl.class
+com\blog\domain\Chat.class
 com\blog\dao\FriendDAO.class
 com\blog\domain\Forum.class
 com\blog\dao\BlogLikesDAO.class

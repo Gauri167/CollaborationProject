@@ -38,6 +38,7 @@ public class ChatDAOImpl implements ChatDAO {
 			Query<Chat> query=session.createQuery("from Chat where toId=:toId and fromId=:fromId")
 					.setParameter("toId",toId).setParameter("fromId",fromId);
 			List<Chat> list=query.list();
+			System.out.println(list.size());
 			return list;
 		} catch (HibernateException e) {
 			e.printStackTrace();
