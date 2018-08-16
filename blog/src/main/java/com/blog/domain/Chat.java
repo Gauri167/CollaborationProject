@@ -55,4 +55,10 @@ public class Chat {
 	public void setFromId(String fromId) {
 		this.fromId = fromId;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return "Chat[message="+message+",to="+toId+"]";
+	}
 }

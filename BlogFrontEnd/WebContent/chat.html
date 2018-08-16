@@ -1,10 +1,17 @@
-<div ng-controller="ChatController" data-ng-init="messageList()">
+<div id="chat-box" ng-controller="ChatCtrl">
+<form ng-submit="addMessage()" name="chatMsg">
+<label align="center">Message
+<input type="text" placeholder="Enter message here" ng-model="message">
+</label>
+<button id="btn" class="btn btn-primary">Send</button>
+</form>
 
-<div ng-repeat="msg in messages">
-<p>{{msg.message}}
+<div class="jumbotron">
+{{messages}}
+<p ng-repeat="msg in messages" color="lightblue">
+<span>{{msg.message}}</span>
+</p>
+
 </div>
-
-Message:<input type="text" ng-model="chat.message">
-<button ng-click="chatFunc(emailId)">Send</button>
 
 </div>
