@@ -11,6 +11,7 @@ public interface FriendDAO {
 	boolean addFriendRequest(Friend friend);
 	List<Friend> getAllPendingRequests(String email);
 	void updateFriendRequest(Friend friend);
+	void rejectFriendRequest(Friend friend);
 	List<User> friendsList(String email);
 
 }

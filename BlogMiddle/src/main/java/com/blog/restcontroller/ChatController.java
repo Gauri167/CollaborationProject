@@ -59,7 +59,7 @@ public class ChatController {
 		return new ResponseEntity<String>(json,HttpStatus.OK);
 	}
 	
-	@MessageMapping("/chat/info")
+	@MessageMapping("/chat")
 	@SendTo("/topic/message")
 	public OutputMessage sendMessage(Message message)
 	{

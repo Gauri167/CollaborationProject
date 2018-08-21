@@ -55,9 +55,15 @@ public class FriendController {
 		return new ResponseEntity<List<Friend>>(list,HttpStatus.OK);
 	}
 	
-	@PostMapping(value="/updateRequest")
+	@PostMapping(value="/acceptRequest")
 	public ResponseEntity<?> updateRequest(@RequestBody Friend friend){
 		friendDAO.updateFriendRequest(friend);
+		return new ResponseEntity<Friend>(friend,HttpStatus.OK);
+	}
+	
+	@PostMapping(value="/rejectRequest")
+	public ResponseEntity<?> rejectRequest(@RequestBody Friend friend){
+		friendDAO.rejectFriendRequest(friend);
 		return new ResponseEntity<Friend>(friend,HttpStatus.OK);
 	}
 

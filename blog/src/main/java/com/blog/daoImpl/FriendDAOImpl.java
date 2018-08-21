@@ -67,6 +67,16 @@ public class FriendDAOImpl implements FriendDAO {
 		}
 
 	}
+	
+	public void rejectFriendRequest(Friend friend) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			friend.setStatus('R');
+			session.update(friend);
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public List<User> friendsList(String email) {
 		Session session = sessionFactory.getCurrentSession();

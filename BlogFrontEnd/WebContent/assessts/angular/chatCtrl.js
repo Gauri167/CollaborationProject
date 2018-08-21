@@ -1,12 +1,9 @@
 app.controller('ChatCtrl',function($scope,$rootScope,ChatService,$http){
 	
-	$scope.messages;
+	$scope.messages=[];
 	
 	
-	ChatService.receive().then(null,null,function(message){
-		//$scope.messages=message.data;
-		$scope.messages.push(message);
-	});
+	
     
 	
 	$scope.message="";
@@ -14,8 +11,13 @@ app.controller('ChatCtrl',function($scope,$rootScope,ChatService,$http){
 	
 	$scope.addMessage=function()
 	{
-		ChatService.send($rootScope.currentUser.username+" : "+$scope.message);
+		ChatService.send($scope.message);
 		$scope.message="";
 	};
+	ChatService.receive().then(null,null,function(message){
+		//$scope.messages=message.data;
+		alert("Recieved Message : "+message);
+		$scope.messages.push(message);
+	});
 		
 });
