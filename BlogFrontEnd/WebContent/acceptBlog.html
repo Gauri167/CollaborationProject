@@ -1,3 +1,15 @@
-<div>
-This is Accept Blog Page
+<div ng-controller="BlogCtrl" ng-init="BlogList()">
+<h3>Accept Blogs</h3>
+<table ng-repeat="blog in blogs">
+<tr>
+<td>Blog:- {{blog.title}}</td>
+</tr>
+<tr>
+<td>Posted By:- {{blog.postedBy}}</td>
+</tr>
+<tr>
+<td><button ng-click="approveBlog(blog.blogId)">Accept</button></td>
+<td><button ng-click="rejectBlog()">Reject</button></td>
+</tr>
+</table>
 </div>

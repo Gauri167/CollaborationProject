@@ -2,12 +2,12 @@
 <div class="container">
 	<div class="row" style="width:200px">
 		<div ng-repeat="suggestedUser in suggestedUsers">
-			
+			<div ng-if="suggestedUser.email!=currentUser.email">
 				Email:<b >{{suggestedUser.email}}</b><br>
 				UserName:<b>{{suggestedUser.username}}</b>
 				
 				<button id="addFriend" name="addFriend" class="btn btn-primary" ng-click="addFriend(suggestedUser.email)">Add Friend</button>
-			
+			</div>
 		</div>
 	</div>
 </div>

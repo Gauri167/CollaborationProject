@@ -1,1 +1,12 @@
-Inactive Jobs
+<div class="panel panel-info" ng-controller="JobController" ng-init="inactiveJobs()">
+<div class="panel-heading">Inactive Jobs</div>
+<div class="panel-body">
+<ul>
+<li ng-repeat="job in inactvJobs">
+<b>Job:</b>{{job.jobDesignation}}<br>
+<b>Job Description:</b>{{job.jobDescription}}<br>
+<b>Posted On:</b>{{job.postedOn|date:'medium'}}<br>
+</li>
+</ul>
+</div>
+</div>

@@ -1,12 +1,14 @@
-<div ng-controller="BlogController" data-ng-init="approvedBlogList()">
-<h3>Blogs</h3>
+<div class="panel panel-info" ng-controller="BlogController" data-ng-init="approvedBlogList()">
+<div class="panel-heading">My Blogs</div>
+<div class="panel-body">
 {{error}}
-<table ng-repeat="blog in blogData">
-<tr>
-<td>Blog:- <a ng-click="showBlog(blog.blogId)">{{blog.title}}</a></td>
-</tr>
-<tr>
-<td>Posted By:- {{blog.postedBy}}</td>
-</tr>
-</table>
+<ul>
+<li ng-repeat="blog in blogData">
+
+<b ng-if="blog.postedBy==currentUser.username">Blog:-</b> <a ng-click="showBlog(blog.blogId)">{{blog.title}}</a>
+<b ng-if="blog.postedBy==currentUser.username">Posted By:-</b> {{blog.postedBy}}
+
+</li>
+</ul>
+</div>
 </div>

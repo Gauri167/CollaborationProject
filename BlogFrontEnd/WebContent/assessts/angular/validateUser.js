@@ -7,6 +7,7 @@ app.controller("LoginController",function($scope,$http,$location,$rootScope){
 			console.log('Status Text:'+$scope.message);
 			$scope.user=response.data;
 			$rootScope.currentUser=response.data;
+			$rootScope.loggedIn=true;
 			if($rootScope.currentUser.role=="A")
 				{$location.url('/')
 				alert($rootScope.currentUser.role);}

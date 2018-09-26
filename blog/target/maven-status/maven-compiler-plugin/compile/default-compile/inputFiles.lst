@@ -5,6 +5,7 @@ C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dbconfig\DBConfig.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\daoImpl\FriendDAOImpl.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dao\BlogDAO.java
+C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dao\ApplyJobDAO.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dao\BlogLikesDAO.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dao\ForumDAO.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\daoImpl\BlogCommentDAOImpl.java
@@ -16,14 +17,19 @@ C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\daoImpl\UserDAOImpl.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\daoImpl\BlogLikesDAOImpl.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dao\ChatDAO.java
+C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dao\MessageDAO.java
+C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\domain\OutputMessage.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\daoImpl\BlogDAOImpl.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\domain\Job.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dao\UserDAO.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\daoImpl\ChatDAOImpl.java
+C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\daoImpl\ApplyJobDAOImpl.java
+C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\daoImpl\MessageDAOImpl.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\domain\ProfilePic.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dao\BlogCommentDAO.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\daoImpl\JobDAOImpl.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dao\FriendDAO.java
+C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\domain\Notification.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\dao\JobDAO.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\domain\BlogLikes.java
 C:\Users\Gauri Gaur\eclipse-workspace\SecondProject\blog\src\main\java\com\blog\domain\Chat.java

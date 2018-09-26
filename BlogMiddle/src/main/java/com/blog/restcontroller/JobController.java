@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.blog.dao.ApplyJobDAO;
 import com.blog.dao.JobDAO;
+import com.blog.domain.ApplyJob;
 import com.blog.domain.Job;
 
 @RestController
@@ -19,6 +21,9 @@ public class JobController {
 	
 	@Autowired
 	JobDAO jobDAO;
+	
+	@Autowired
+	ApplyJobDAO ajobDAO;
 	
 	@GetMapping(value="/jobdemo")
 	public ResponseEntity<String> demoPurpose(){
@@ -85,5 +90,13 @@ public class JobController {
 			return new ResponseEntity<List<Job>>(list, HttpStatus.OK);
 		else
 			return new ResponseEntity<List<Job>>(list, HttpStatus.NOT_FOUND);
+	}
+	
+	@PostMapping(value="/applyJob")
+	public ResponseEntity<String> applyJob(@RequestBody ApplyJob ajob){
+		if(ajobDAO.apply(ajob)==true)
+		return new ResponseEntity<String>("Successfully applied",HttpStatus.OK);
+		else
+			return new ResponseEntity<String>("Failed",HttpStatus.OK);	
 	}
 }

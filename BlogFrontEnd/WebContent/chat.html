@@ -1,5 +1,5 @@
 <div id="chat-box" ng-controller="ChatCtrl">
-<form ng-submit="addMessage()" name="chatMsg">
+<form ng-submit="addMessage(currentUser.username)" name="chatMsg">
 <label align="center">Message
 <input type="text" placeholder="Enter message here" ng-model="message">
 </label>
@@ -7,9 +7,8 @@
 </form>
 
 <div class="jumbotron">
-{{messages}}
 <p ng-repeat="msg in messages" color="lightblue">
-<span>{{msg.message}}</span>
+<b>{{uname}}</b>:-<span>{{msg.message}}</span>
 </p>
 
 </div>

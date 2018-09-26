@@ -18,9 +18,10 @@ app.service('ChatService',function($q,$timeout,$http){
 	
 	service.receive=function(){
 		alert("recieve message function");
+		$http.get(base_url+"getMessage/");
 		return listener.promise;
 		//return messageIds;
-		//$http.get(base_url+"getMessage/");
+		
 	};
 	
 	var reconnect=function(){

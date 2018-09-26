@@ -8,14 +8,17 @@ var app=angular.module("myApp",["ngRoute"]);
 		.when("/addBlog",{templateUrl:"addBlog.html"})
 		.when("/approvedBlogs",{templateUrl:"approvedBlogs.html",
 			                    controller:"BlogController"})
+	    .when("/blogs",{templateUrl:"blogs.html"})
 		.when("/acceptBlog",{templateUrl:"acceptBlog.html"})
 		.when("/addJob",{templateUrl:"job.html"})
 		.when("/activeJobs",{templateUrl:"activeJobs.html"})
 		.when("/inactiveJobs",{templateUrl:"inactiveJobs.html"})
+		.when("/applyJob",{templateUrl:"applyJob.html"})
 		.when("/showblog",{templateUrl:"showBlog.html"})
 		.when("/suggestedUsers",{templateUrl:"suggestedFriends.html"})
 		.when("/friendRequests",{templateUrl:"friendRequests.html"})
 		.when("/friendsList",{templateUrl:"friendsList.html"})
 		.when("/chat",{templateUrl:"chat.html"})
+		.when("/chatRoom",{templateUrl:"chatRoom.html"})
 		.otherwise({templateUrl:"home.html"});
 	});

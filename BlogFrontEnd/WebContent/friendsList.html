@@ -1,10 +1,15 @@
-<div ng-controller="FriendListController" data-ng-init="friendsList()">
+<div class="panel panel-info" ng-controller="FriendListController" data-ng-init="friendsList()">
+<div class="panel-heading">My Friends</div>
+<div class="panel-body">
 	<div class="container">
 		<div class="row" style="width: 200px">
-			<div ng-repeat="friend in friends">
+		<ul>
+			<li ng-repeat="friend in friends">
 			Email:<b>{{friend.email}}</b>
 			<button ng-click="startChat(friend.email)">Message</button>
-			</div>
+			</li>
+	    </ul>
 		</div>
 	</div>
-</div>
+	</div>
+	</div>

@@ -21,7 +21,8 @@
 			<b>Posted On: {{ob.postedOn | date:'medium'}}</b>
 		</div>
 		<div class="panel-body">
-		    <p ng-bind-html="content">{{ob.content}}</p><!-- content is blogPost.blogContent as HTML -->
+		
+		    <p >{{ob.content}}</p><!-- content is blogPost.blogContent as HTML -->
 		</div>
 	</div>
 
@@ -35,6 +36,7 @@
 <div ng-show="isLiked"><!-- result of the query select * from blogpostlikes where post_id=? and u_email=? -->
 <a><span class="glyphicon glyphicon-thumbs-up" style="color:blue" ng-click="updateLikes(ob.blogId)"></span></a>
 <!-- delete data from blogpostlikes and decrement the number of likes -->
+
 </div>
 <div ng-show="!isLiked">
 <a><span class="glyphicon glyphicon-thumbs-up" style="color:black" ng-click="updateLikes(ob.blogId)"></span></a>
@@ -44,15 +46,13 @@
 {{likedBlog.likes}} likes
 </div>
 
-<button ng-controller="CommentController" ng-click="demo()">DEMO</button>
-
+<div ng-controller="CommentController" ng-init="getcomments()">
 <form method="post">
-<div ng-controller="CommentController">
+
 <h4>Add a Comment...</h4>
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Comment</label>  
   <div class="col-md-5">
-  {{ob.blogId}}
   <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" ng-model="blogComment.commentText">
   
   <div class="form-group">
@@ -64,6 +64,15 @@
     
   </div>
 </div>
-</div>
 </form>
+<br>
+<br>
+<br>
+<h4>Comments:</h4>
+<ul>
+<li ng-repeat="comment in comments">
+{{comment.commentText}}
+</li>
+</ul>
+</div>
 </div>

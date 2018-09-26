@@ -3,8 +3,6 @@ package com.blog.restcontroller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.blog.dao.BlogCommentDAO;
 import com.blog.dao.BlogDAO;
-import com.blog.dao.BlogLikesDAO;
 import com.blog.domain.Blog;
-import com.blog.domain.BlogComment;
-import com.blog.domain.BlogLikes;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -28,19 +22,6 @@ public class BlogController {
 	
 	@Autowired
 	BlogDAO blogDAO;
-	
-	@Autowired
-	BlogCommentDAO blogCommentDAO;
-	
-	@Autowired
-	private BlogLikesDAO blogLikesDAO;
-	
-	
-	/*@GetMapping(value="/demo")
-	public ResponseEntity<String> demoPurpose(){
-		
-		return new ResponseEntity<>("Demo Data",HttpStatus.OK);
-	}*/
 	
 	@PostMapping(value="/addBlog")
 	public ResponseEntity<String> addBlog(@RequestBody Blog blog){
@@ -123,60 +104,9 @@ public class BlogController {
 			return new ResponseEntity<List<Blog>>(list,HttpStatus.NOT_FOUND);
 	}
 	
-	@GetMapping(value="/hasUserLikedBlog/{blogId}")
-	public ResponseEntity<?> hasUserLikedBlog(@PathVariable int blogId,HttpSession httpSession){
-		String username=(String) httpSession.getAttribute("username");
-		BlogLikes blogLikes=blogLikesDAO.hasUserLikedBlog(blogId, username);
-		System.out.println("hasUserLikedBlog controller");
-		return new ResponseEntity<BlogLikes>(blogLikes,HttpStatus.OK);
-		//if likes is null,response.data=''
-		//if likes is 1 object,response.data={bloglikes object}
-		
-	}
-	
-	@GetMapping(value="/updateBlogLikes/{blogId}")
-	public ResponseEntity<?> updateBlogLikes(@PathVariable int blogId,HttpSession httpSession){
-		String email=(String) httpSession.getAttribute("email");
-		System.out.println("Update Likes Controller");
-		Blog  blog=blogLikesDAO.updateBlogLikes(blogId, email);
-		return new ResponseEntity<Blog>(blog,HttpStatus.OK);
-	}
-	
-	@PostMapping(value="/addBlogComment/{blogId}")
-	public ResponseEntity<?> addBlogComment(@PathVariable("blogId") int blogId,@RequestBody BlogComment blogComment,HttpSession httpSession)
-	{
-		String email=(String) httpSession.getAttribute("email");
-		blogComment.setBlogId(blogId);
-		System.out.println(blogComment.getBlogId());
-		blogComment.setUsername(email);
-		if(blogCommentDAO.addComment(blogComment))
-			return new ResponseEntity<String>("Comment Added Successfully",HttpStatus.OK);
-		else
-			return new ResponseEntity<String>("Cannot add comment",HttpStatus.NOT_FOUND);
-	}
-	
-	@PostMapping(value="/deleteBlogComment/{commentId}")
-	public ResponseEntity<?> deleteBlogComment(@PathVariable("commentId") int commentId)
-	{
-		if(blogCommentDAO.deleteComment(commentId))
-			return new ResponseEntity<String>("COmmenet deleted Successfully",HttpStatus.OK);
-		else
-			return new ResponseEntity<String>("Cannot delete comment",HttpStatus.NOT_FOUND);
-	}
-	
-	@GetMapping(value="/blogCommenetList")
-	public ResponseEntity<?> blogCommentList()
-	{
-		List<BlogComment> list=blogCommentDAO.commentList();
-		if(list.size()>0)
-			return new ResponseEntity<List<BlogComment>>(list,HttpStatus.OK);
-		else
-			return new ResponseEntity<String>("No Comment Found",HttpStatus.NOT_FOUND);
-	}
-	
 	@PostMapping(value="/acceptBlog/{blogId}")
 	public ResponseEntity<?> acceptBlog(@PathVariable("blogId") int blogId){
 		blogDAO.acceptBlog(blogId);
-		return new ResponseEntity<String>("Blog accepted",HttpStatus.OK);
+		return new ResponseEntity<String>("{\"Blog Accepted\"}",HttpStatus.OK);
 	}
 }

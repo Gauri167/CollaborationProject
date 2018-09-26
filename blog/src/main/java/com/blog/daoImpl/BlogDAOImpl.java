@@ -23,7 +23,7 @@ public class BlogDAOImpl implements BlogDAO {
 	public boolean addBlog(Blog blog) {
 		try {
 			blog.setPostedOn(new Date());
-			blog.setStatus("Not Accepted");
+			blog.setStatus("NA");
 			sessionFactory.getCurrentSession().save(blog);
 			return true;
 		} catch (HibernateException e) {

@@ -1,12 +1,16 @@
 com\blog\domain\User.class
 com\blog\dao\ChatDAO.class
 com\blog\dbconfig\DBConfig.class
+com\blog\domain\OutputMessage.class
 com\blog\domain\Blog.class
 com\blog\dao\BlogCommentDAO.class
+com\blog\daoImpl\MessageDAOImpl.class
 com\blog\domain\Message.class
 com\blog\domain\Job.class
 com\blog\daoImpl\ForumDAOImpl.class
 com\blog\daoImpl\ChatDAOImpl.class
+com\blog\dao\ApplyJobDAO.class
+com\blog\domain\Notification.class
 com\blog\dao\ForumDAO.class
 com\blog\domain\Friend.class
 com\blog\daoImpl\BlogDAOImpl.class
@@ -18,8 +22,10 @@ com\blog\domain\BlogComment.class
 com\blog\domain\ForumComment.class
 com\blog\dao\JobDAO.class
 com\blog\daoImpl\BlogCommentDAOImpl.class
+com\blog\daoImpl\ApplyJobDAOImpl.class
 com\blog\dao\UserDAO.class
 com\blog\domain\BlogLikes.class
+com\blog\dao\MessageDAO.class
 com\blog\domain\ApplyJob.class
 com\blog\domain\ProfilePic.class
 com\blog\daoImpl\UserDAOImpl.class

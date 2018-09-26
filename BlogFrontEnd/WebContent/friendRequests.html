@@ -1,11 +1,17 @@
-<div ng-controller="FriendRequestController" data-ng-init="friendRequests()">
+<div class="panel panel-info" ng-controller="FriendRequestController" data-ng-init="friendRequests()">
+<div class="panel-heading">Friend Requests</div>
+<div class="panel-body">
 <h3>{{message}}</h3>
 	<div class="container">
 		<div class="row" style="width: 200px">
-			<div ng-repeat="friend in friends"></div>
+		<ul>
+			<li ng-repeat="friend in friends">
 			Email:<b>{{friend.email}}</b>
-			<button ng-click="acceptFriend(friend)">Accept</button>
-			<button ng-click="rejectFriend(friend)">Reject</button>
+			<button ng-show="friend!=null" ng-click="acceptFriend(friend)">Accept</button>
+			<button ng-show="friend!=null" ng-click="rejectFriend(friend)">Reject</button>
+			</li>
+		</ul>
 		</div>
 	</div>
-</div>
+	</div>
+	</div>
