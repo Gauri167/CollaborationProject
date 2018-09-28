@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>BLOG</title>
+<title>My Word</title>
 <link rel="stylesheet" href="assessts/css/bootstrap.min.css">
 </head>
 
@@ -63,6 +63,16 @@
      
      <li><a href="#!/chatRoom" ng-if="loggedIn==true">Chat Room</a></li>
 
+     <li class="dropdown" ng-if="loggedIn==true">
+     <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-controller="NotificationController">
+     <span class="glyphicon glyphicon-globe"><span class="rw-number-notification" ng-if="notificationsCount>0">{{notificationsCount}}</span></span></a>
+     <ul class="dropdown-menu">
+     <span class="dropdown-content">
+     <li ng-repeat="n in notifications"><a href="#!/getNotification/{{n.id}}">Blog titled<b>{{n.blogTitle}}</b>approval status is updated</a></li>
+     </span>
+     </ul>
+     </li>
+     
      
    </ul>
   <!--  <div class="input-group">
@@ -167,6 +177,8 @@
 <script src="assessts/angular/friendRequest.js"></script>
 <script src="assessts/angular/chatCtrl.js"></script>
 <script type="text/javascript" src="assessts/services/chatService.js"></script>
+<script type="text/javascript" src="assessts/services/notificationService.js"></script>
+<script type="text/javascript" src="assessts/angular/notification.js"></script>
 <script src="assessts/js/lodash.js"></script>
 <script src="assessts/js/sockjs.js"></script>
 <script src="assessts/js/stomp.js"></script>
