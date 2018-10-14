@@ -30,7 +30,6 @@ public class BlogController {
 		blog.setLikes(0);
 		blog.setUsername("Gauri");
 		blog.setPostedBy("Gauri Gaur");
-		blog.setStatus("A");
 		
 		if(blogDAO.addBlog(blog))
 			return new ResponseEntity<String>("{\"message\":\"Success\"}",HttpStatus.OK);
@@ -98,6 +97,7 @@ public class BlogController {
 	public ResponseEntity<List<Blog>> tobeApprovedBlogList()
 	{
 		List<Blog> list=blogDAO.notApprovedBlogList();
+		System.out.println(list.size());
 		if(list.size()>0)
 			return new ResponseEntity<List<Blog>>(list,HttpStatus.OK);
 		else 

@@ -1,4 +1,4 @@
-app.Controller("NotificationController",function($scope,NotificationService,$routeParams,$rootScope,$location){
+app.controller("NotificationController",function($scope,NotificationService,$routeParams,$rootScope,$location){
 	var id=$routeParams.id;
 	
 	function getAllNotification(){

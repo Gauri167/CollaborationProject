@@ -14,6 +14,9 @@ app.controller("BlogCtrl",function($scope,$http,$log){
 		console.log("To be approved blog list function");
 		$http.get('http://localhost:8084/BlogMiddle/tobeApprovedBlogs').then(function(response){
 			$scope.blogs=response.data;
+			alert($scope.blogs.length)
+			if ($scope.blogs.length=0)
+				$scope.message="No pending blogs"
 			$log.info(response);
 		});
 	}
